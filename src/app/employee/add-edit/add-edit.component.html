@@ -1,0 +1,40 @@
+<div class="form-froup row">
+
+    <label class="col-sm-2 col-form-label">ФИО</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="fullname"
+        placeholder="Введите ФИО" />
+    </div>
+
+    <label class="col-sm-2 col-form-label">Отдел</label>
+    <div class="col-sm-10">
+        <!-- <input type="number" class="form-control" [(ngModel)]="department"
+        placeholder="Choose department" /> -->
+        <select class="form-control select" [(ngModel)]="department">
+            <option>--Выберите--</option>
+            <option *ngFor="let name of departmentList">
+                {{name}}
+            </option>
+        </select>
+    </div>
+
+    <label class="col-sm-2 col-form-label">Дата рождения</label>
+    <div class="col-sm-10">
+        <input type="date" class="form-control" [(ngModel)]="birthday"
+        placeholder="Выберите дату рождения" />
+    </div>
+
+    <label class="col-sm-2 col-form-label">Зарплата</label>
+    <div class="col-sm-10">
+        <input type="number" class="form-control" [(ngModel)]="salary"
+        placeholder="Введите зарплату" />
+    </div>
+</div>
+
+<button (click)="addEmployee()" *ngIf="!emp?.id" class="btn btn-primary">
+    Add
+</button>
+
+<button (click)="updateEmployee()" *ngIf="emp?.id !== null && emp?.id !== undefined" class="btn btn-primary">
+    Update
+</button>
